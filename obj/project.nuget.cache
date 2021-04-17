@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "BwKAIcGOWynJ5k59szfjulD61AZjDzHfOZ6Tos5vQZJrEaSvTvyHEf+hGHGbrujDqhsBNpAn+mXy+eDH06h5qg==",
+  "success": true,
+  "projectFilePath": "D:\\Repos\\AdvancedBeginner\\ASCII\\ASCII Art Terminal\\ASCII Art Terminal\\ASCII Art Terminal.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\sebco\\.nuget\\packages\\sixlabors.imagesharp\\1.0.3\\sixlabors.imagesharp.1.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
