@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30804.86
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ASCII Art Terminal", "ASCII Art Terminal.csproj", "{97E03D82-3691-439B-95DF-28E3C949D705}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{97E03D82-3691-439B-95DF-28E3C949D705}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97E03D82-3691-439B-95DF-28E3C949D705}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97E03D82-3691-439B-95DF-28E3C949D705}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97E03D82-3691-439B-95DF-28E3C949D705}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {452E44B5-EAC4-4B03-AF08-2FE155AF75B0}
+	EndGlobalSection
+EndGlobal

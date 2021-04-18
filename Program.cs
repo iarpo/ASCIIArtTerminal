@@ -11,9 +11,10 @@ namespace ASCII_Art_Terminal
         static Image<Rgba32> image; //todo Find out why these need to be static
         static bool imagePathIsValid = false;
         static string filePath;
-        static readonly string folderPath = @"C:\Users\sebco\source\repos\AdvancedBeginner\ASCIIArtTerminal\images\";
+        static readonly string folderPath = @"D:\Repos\AdvancedBeginner\ASCII\ASCII Art Terminal_SOURCETREE\images\";
         static Rgba32[,] pixelBuffer;
         static int[,] pixelLightnessBuffer;
+        static string[] ASCIIArray;
 
 
         static void Main()
@@ -24,16 +25,10 @@ namespace ASCII_Art_Terminal
                 TryLoadImage();
             }
             PixelsToArray(image);
-            AccessImagePixels();
             ConvertRGBAToLightnessValues(pixelBuffer);
             ConvertLightnessValueToASCIIChar(pixelLightnessBuffer);
+            PrintASCIIImage(ASCIIArray);
         }
-
-        private static void ConvertLightnessValueToASCIIChar(int[,] pixelLightnessBuffer)
-        {
-            string charRange = "`^\",:;Il!i~+_-?][}{1)(|\\/tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW&8%B@$";
-        }
-
 
 
         /// <summary>
@@ -134,6 +129,35 @@ namespace ASCII_Art_Terminal
                 }
             }
 
+        }
+
+        private static void ConvertLightnessValueToASCIIChar(int[,] pixelLightnessBuffer)
+        {
+            char[] charRangeArray = "`^\":;I!i~_-?[}{)(|\\/tfrxvczYUJLQ0Zmwpdbhao#MW&8%B@$456".ToCharArray();
+            ASCIIArray = new string[image.Height];
+
+            for (int y = 0; y < image.Height; y++)
+            {
+                string xLine = null;
+                for (int x = 0; x < image.Width; x++)
+                {
+                    var i = pixelLightnessBuffer[x, y];
+                    xLine = $"{xLine}{charRangeArray[(i - (i % 5)) / 5]}";
+                }
+                ASCIIArray[y] = xLine;
+            }
+        }
+
+        /// <summary>
+        /// Print ASCII array to the console
+        /// </summary>
+        /// <param name="arrayInput"></param>
+        private static void PrintASCIIImage(string[] arrayInput)
+        {
+            for (int i = 0; i < image.Height; i++)
+            {
+                Console.WriteLine(arrayInput[i]);
+            }
         }
     }
 }

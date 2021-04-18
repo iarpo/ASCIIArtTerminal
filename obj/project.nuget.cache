@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "gBeW508ksb1s9gASmhAcPPfo6ge5Lj7wjkycKBg56TiVVeyzYpljd7YyOPJEBW9L9PgQ/LY9p9YrkGgy6rsyKw==",
+  "dgSpecHash": "4r2GnbengR7canlvlRDX8vX1msQSLA6QQlDMdU+yft46bNg92CGWL7pxw7hzrDW2og23oFTVBPHxUJMn45taEw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\sebco\\source\\repos\\AdvancedBeginner\\ASCIIArtTerminal\\ASCII Art Terminal.csproj",
+  "projectFilePath": "D:\\Repos\\AdvancedBeginner\\ASCII\\ASCII Art Terminal_SOURCETREE\\ASCII Art Terminal.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\sebco\\.nuget\\packages\\sixlabors.imagesharp\\1.0.3\\sixlabors.imagesharp.1.0.3.nupkg.sha512"
   ],

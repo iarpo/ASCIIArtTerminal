@@ -28,3 +28,18 @@ C:\Users\sebco\source\repos\AdvancedBeginner\ASCIIArtTerminal\obj\Debug\netcorea
 C:\Users\sebco\source\repos\AdvancedBeginner\ASCIIArtTerminal\obj\Debug\netcoreapp3.1\ASCII Art Terminal.csproj.CoreCompileInputs.cache
 C:\Users\sebco\source\repos\AdvancedBeginner\ASCIIArtTerminal\obj\Debug\netcoreapp3.1\ASCII Art Terminal.csproj.CopyComplete
 C:\Users\sebco\source\repos\AdvancedBeginner\ASCIIArtTerminal\obj\Debug\netcoreapp3.1\ASCII Art Terminal.genruntimeconfig.cache
+D:\Repos\AdvancedBeginner\ASCII\ASCII Art Terminal_SOURCETREE\bin\Debug\netcoreapp3.1\ASCII Art Terminal.exe
+D:\Repos\AdvancedBeginner\ASCII\ASCII Art Terminal_SOURCETREE\bin\Debug\netcoreapp3.1\ASCII Art Terminal.deps.json
+D:\Repos\AdvancedBeginner\ASCII\ASCII Art Terminal_SOURCETREE\bin\Debug\netcoreapp3.1\ASCII Art Terminal.runtimeconfig.json
+D:\Repos\AdvancedBeginner\ASCII\ASCII Art Terminal_SOURCETREE\bin\Debug\netcoreapp3.1\ASCII Art Terminal.runtimeconfig.dev.json
+D:\Repos\AdvancedBeginner\ASCII\ASCII Art Terminal_SOURCETREE\bin\Debug\netcoreapp3.1\ASCII Art Terminal.dll
+D:\Repos\AdvancedBeginner\ASCII\ASCII Art Terminal_SOURCETREE\bin\Debug\netcoreapp3.1\ASCII Art Terminal.pdb
+D:\Repos\AdvancedBeginner\ASCII\ASCII Art Terminal_SOURCETREE\bin\Debug\netcoreapp3.1\SixLabors.ImageSharp.dll
+D:\Repos\AdvancedBeginner\ASCII\ASCII Art Terminal_SOURCETREE\obj\Debug\netcoreapp3.1\ASCII Art Terminal.csprojAssemblyReference.cache
+D:\Repos\AdvancedBeginner\ASCII\ASCII Art Terminal_SOURCETREE\obj\Debug\netcoreapp3.1\ASCII Art Terminal.AssemblyInfoInputs.cache
+D:\Repos\AdvancedBeginner\ASCII\ASCII Art Terminal_SOURCETREE\obj\Debug\netcoreapp3.1\ASCII Art Terminal.AssemblyInfo.cs
+D:\Repos\AdvancedBeginner\ASCII\ASCII Art Terminal_SOURCETREE\obj\Debug\netcoreapp3.1\ASCII Art Terminal.csproj.CoreCompileInputs.cache
+D:\Repos\AdvancedBeginner\ASCII\ASCII Art Terminal_SOURCETREE\obj\Debug\netcoreapp3.1\ASCII Art Terminal.csproj.CopyComplete
+D:\Repos\AdvancedBeginner\ASCII\ASCII Art Terminal_SOURCETREE\obj\Debug\netcoreapp3.1\ASCII Art Terminal.dll
+D:\Repos\AdvancedBeginner\ASCII\ASCII Art Terminal_SOURCETREE\obj\Debug\netcoreapp3.1\ASCII Art Terminal.pdb
+D:\Repos\AdvancedBeginner\ASCII\ASCII Art Terminal_SOURCETREE\obj\Debug\netcoreapp3.1\ASCII Art Terminal.genruntimeconfig.cache
