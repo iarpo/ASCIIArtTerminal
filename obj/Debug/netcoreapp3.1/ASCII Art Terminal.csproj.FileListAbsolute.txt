@@ -43,3 +43,18 @@ D:\Repos\AdvancedBeginner\ASCII\ASCII Art Terminal_SOURCETREE\obj\Debug\netcorea
 D:\Repos\AdvancedBeginner\ASCII\ASCII Art Terminal_SOURCETREE\obj\Debug\netcoreapp3.1\ASCII Art Terminal.dll
 D:\Repos\AdvancedBeginner\ASCII\ASCII Art Terminal_SOURCETREE\obj\Debug\netcoreapp3.1\ASCII Art Terminal.pdb
 D:\Repos\AdvancedBeginner\ASCII\ASCII Art Terminal_SOURCETREE\obj\Debug\netcoreapp3.1\ASCII Art Terminal.genruntimeconfig.cache
+C:\Users\sebco\source\GitHub\ASCIIArtTerminal\bin\Debug\netcoreapp3.1\ASCII Art Terminal.exe
+C:\Users\sebco\source\GitHub\ASCIIArtTerminal\bin\Debug\netcoreapp3.1\ASCII Art Terminal.deps.json
+C:\Users\sebco\source\GitHub\ASCIIArtTerminal\bin\Debug\netcoreapp3.1\ASCII Art Terminal.runtimeconfig.json
+C:\Users\sebco\source\GitHub\ASCIIArtTerminal\bin\Debug\netcoreapp3.1\ASCII Art Terminal.runtimeconfig.dev.json
+C:\Users\sebco\source\GitHub\ASCIIArtTerminal\bin\Debug\netcoreapp3.1\ASCII Art Terminal.dll
+C:\Users\sebco\source\GitHub\ASCIIArtTerminal\bin\Debug\netcoreapp3.1\ASCII Art Terminal.pdb
+C:\Users\sebco\source\GitHub\ASCIIArtTerminal\bin\Debug\netcoreapp3.1\SixLabors.ImageSharp.dll
+C:\Users\sebco\source\GitHub\ASCIIArtTerminal\obj\Debug\netcoreapp3.1\ASCII Art Terminal.csprojAssemblyReference.cache
+C:\Users\sebco\source\GitHub\ASCIIArtTerminal\obj\Debug\netcoreapp3.1\ASCII Art Terminal.AssemblyInfoInputs.cache
+C:\Users\sebco\source\GitHub\ASCIIArtTerminal\obj\Debug\netcoreapp3.1\ASCII Art Terminal.AssemblyInfo.cs
+C:\Users\sebco\source\GitHub\ASCIIArtTerminal\obj\Debug\netcoreapp3.1\ASCII Art Terminal.csproj.CoreCompileInputs.cache
+C:\Users\sebco\source\GitHub\ASCIIArtTerminal\obj\Debug\netcoreapp3.1\ASCII Art Terminal.csproj.CopyComplete
+C:\Users\sebco\source\GitHub\ASCIIArtTerminal\obj\Debug\netcoreapp3.1\ASCII Art Terminal.dll
+C:\Users\sebco\source\GitHub\ASCIIArtTerminal\obj\Debug\netcoreapp3.1\ASCII Art Terminal.pdb
+C:\Users\sebco\source\GitHub\ASCIIArtTerminal\obj\Debug\netcoreapp3.1\ASCII Art Terminal.genruntimeconfig.cache

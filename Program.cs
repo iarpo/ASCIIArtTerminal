@@ -1,94 +1,146 @@
 ﻿using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.Processing;
 using SixLabors.ImageSharp.PixelFormats;
 using System;
-
+using System.Net;
 
 namespace ASCII_Art_Terminal
 {
     class Program
     {
-
-        static Image<Rgba32> image; //todo Find out why these need to be static
-        static bool imagePathIsValid = false;
-        static string filePath;
-        static readonly string folderPath = @"D:\Repos\AdvancedBeginner\ASCII\ASCII Art Terminal_SOURCETREE\images\";
         static Rgba32[,] pixelBuffer;
         static int[,] pixelLightnessBuffer;
         static string[] ASCIIArray;
 
-
         static void Main()
         {
-            filePath = GetFilePath(folderPath);
-            while (!imagePathIsValid)
+            string twitterURL;
+            string imageURL;
+
+            do
             {
-                TryLoadImage();
-            }
-            PixelsToArray(image);
-            ConvertRGBAToLightnessValues(pixelBuffer);
-            ConvertLightnessValueToASCIIChar(pixelLightnessBuffer);
-            PrintASCIIImage(ASCIIArray);
+                // Ask user for twitter image URL
+                Console.WriteLine("Give me a Twitter image URL: ");
+                twitterURL = Console.ReadLine();
+
+                imageURL = GetImageDataFromTwitter(twitterURL);
+
+            } while (twitterURL == imageURL);
+
+
+            // check if URL is a valid image
+            DownloadImageFromTwitterURLAsync(imageURL);
+
+            // set reference to local files
+            string path = "C:\\Users\\sebco\\source\\GitHub\\ASCIIArtTerminal\\bin\\Debug\\netcoreapp3.1\\testImage.jpg";
+            string pathResized = "C:\\Users\\sebco\\source\\GitHub\\ASCIIArtTerminal\\bin\\Debug\\netcoreapp3.1\\resizedImage.jpg";
+
+            Image<Rgba32> image = Image.Load<Rgba32>(path, new SixLabors.ImageSharp.Formats.Jpeg.JpegDecoder());
+            Image<Rgba32> imageResized = Image.Load<Rgba32>(pathResized, new SixLabors.ImageSharp.Formats.Jpeg.JpegDecoder());
+
+            ConvertImageSizeToFitconsole(image, pathResized, 250);
+
+            MapPixelsToArray(imageResized);
+
+            ConvertRGBAToLightnessValues(pixelBuffer, imageResized);
+
+            ConvertLightnessValueToASCIIChar(pixelLightnessBuffer, imageResized);
+
+            PrintASCIIImage(ASCIIArray, imageResized);
+
+
         }
 
 
         /// <summary>
-        /// Asks the user for the file name, including extension
+        /// Resizes original image to given width
         /// </summary>
-        /// <param name="folderPath"></param>
-        /// <returns></returns>
-        static string GetFilePath(string folderPath)
+        /// <param name="image">Image object</param>
+        /// <param name="path">Path of local copy of file</param>
+        private static void ConvertImageSizeToFitconsole(Image<Rgba32> image, string path, int filePixelWidth)
         {
-            Console.WriteLine($"Enter full file name of image to be edited in {folderPath}");
-            string file = Console.ReadLine();
-            string filePath = folderPath + file;
-            return filePath;
+            using (image)
+            {
+                image.Mutate(x => x.Resize(filePixelWidth, 0));
+
+                image.Save(path);
+            }
         }
 
         /// <summary>
-        /// Try load image from user entered path
+        /// Converts Twitter's twimg URL to usable image URL
         /// </summary>
-        static void TryLoadImage() //Todo Make this method private and setup proper parameter inputs
+        /// <param name="inputURL"></param>
+        /// <returns></returns>
+        public static string GetImageDataFromTwitter(string inputURL)
+        {
+
+            // is png
+            if (inputURL.Contains("?format=png"))
+            {
+                inputURL = (inputURL.Substring(0, inputURL.IndexOf("?format")) + ".png");
+            }
+            // is jpg
+            else if (inputURL.Contains("?format=jpg"))
+            {
+                inputURL = (inputURL.Substring(0, inputURL.IndexOf("?format")) + ".jpg");
+            }
+            // is not valid
+            else
+            {
+                Console.WriteLine("Sorry I can't handle that file type");
+            }
+
+            return inputURL;
+
+        }
+
+        /// <summary>
+        /// Connects and downloads a copy of the image from the given URL
+        /// </summary>
+        /// <param name="newImageURL"></param>
+        private static void DownloadImageFromTwitterURLAsync(string newImageURL)
+
+
         {
             try
             {
-                image = Image.Load<Rgba32>(filePath);
-                Console.WriteLine($"Correct image loaded: {filePath}");
-                Console.WriteLine($"Width:   {image.Width}, Height: {image.Height}");
-                image.Save(RemoveFileExtension(filePath) + ".jpg"); //todo This doesn't save a new file
-                imagePathIsValid = true;
+                // verify image is loaded successfully from URL
+                // saves to C:\Users\sebco\source\GitHub\ASCIIArtTerminal\bin\Debug\netcoreapp3.1
+                using (var client = new WebClient())
+                {
+                    client.DownloadFile(newImageURL, "testImage.jpg");
+                }
+
+                // todo this needs changing to load and process IN STREAM
+
+                Console.WriteLine("success!");
+
             }
-            catch (System.IO.IOException)
+
+            catch (Exception e)
             {
                 Console.WriteLine("Image not found");
-                GetFilePath(folderPath);
+                Console.WriteLine(e.Message);
+
             }
 
         }
 
-        /// <summary>
-        /// Removes a path's files extension
-        /// </summary>
-        /// <param name="path"></param>
-        /// <returns>string minues any file extension</returns>
-        private static string RemoveFileExtension(string path)
-        {
-            int extensionStart = path.LastIndexOf('.');
-            return path.Substring(0, extensionStart);
-        }
 
         /// <summary>
         /// Create a 2D array of pixel RGBA32 values for the given image input
         /// </summary>
-        private static void PixelsToArray(Image<Rgba32> imageInput)
+        private static void MapPixelsToArray(Image<Rgba32> imageInput)
         {
 
-            pixelBuffer = new Rgba32[image.Width, image.Height];
+            pixelBuffer = new Rgba32[imageInput.Width, imageInput.Height];
 
 
-            for (int yHeight = 0; yHeight < image.Height; yHeight++)
+            for (int yHeight = 0; yHeight < imageInput.Height; yHeight++)
             {
-                Span<Rgba32> pixelRowSpan = image.GetPixelRowSpan(yHeight);
-                for (int xWidth = 0; xWidth < image.Width; xWidth++)
+                Span<Rgba32> pixelRowSpan = imageInput.GetPixelRowSpan(yHeight);
+                for (int xWidth = 0; xWidth < imageInput.Width; xWidth++)
                 {
                     // get pixel data as a tuple (no need for a 3D array as tuple is self contained)
                     pixelBuffer[xWidth, yHeight] = pixelRowSpan[xWidth];
@@ -98,32 +150,16 @@ namespace ASCII_Art_Terminal
         }
 
         /// <summary>
-        /// Print a pixel's RGBA values from co-ordinates entered by the user.
-        /// </summary>
-        private static void AccessImagePixels()
-        {
-            Console.WriteLine("Access pixel values here.\n");
-
-            Console.WriteLine($"Choose the pixels X co-ordinate from range {image.Width}");
-            int xCoord = int.Parse(Console.ReadLine()); //todo add exception handling for invalid entries
-
-            Console.WriteLine($"Choose the pixels Y co-ordinate from range {image.Height}");
-            int yCoord = int.Parse(Console.ReadLine()); //todo add exception handling for invalid entries
-
-            Console.WriteLine($"RGBA values for pixel {xCoord}, {yCoord}: {pixelBuffer[xCoord, yCoord]}");
-        }
-
-        /// <summary>
         /// Converts an array's RGB values into int lightness values
         /// </summary>
         /// <param name="pixelBuffer"></param>
-        private static void ConvertRGBAToLightnessValues(Rgba32[,] pixelBuffer)
+        private static void ConvertRGBAToLightnessValues(Rgba32[,] pixelBuffer, Image<Rgba32> imageInput)
         {
-            pixelLightnessBuffer = new int[image.Width, image.Height];
+            pixelLightnessBuffer = new int[imageInput.Width, imageInput.Height];
 
-            for (int y = 0; y < image.Height; y++)
+            for (int y = 0; y < imageInput.Height; y++)
             {
-                for (int x = 0; x < image.Width; x++)
+                for (int x = 0; x < imageInput.Width; x++)
                 {
                     pixelLightnessBuffer[x, y] = (pixelBuffer[x, y].R + pixelBuffer[x, y].G + pixelBuffer[x, y].B) / 3;
                 }
@@ -131,15 +167,15 @@ namespace ASCII_Art_Terminal
 
         }
 
-        private static void ConvertLightnessValueToASCIIChar(int[,] pixelLightnessBuffer)
+        private static void ConvertLightnessValueToASCIIChar(int[,] pixelLightnessBuffer, Image<Rgba32> imageInput)
         {
             char[] charRangeArray = "`^\":;I!i~_-?[}{)(|\\/tfrxvczYUJLQ0Zmwpdbhao#MW&8%B@$456".ToCharArray();
-            ASCIIArray = new string[image.Height];
+            ASCIIArray = new string[imageInput.Height];
 
-            for (int y = 0; y < image.Height; y++)
+            for (int y = 0; y < imageInput.Height; y++)
             {
                 string xLine = null;
-                for (int x = 0; x < image.Width; x++)
+                for (int x = 0; x < imageInput.Width; x++)
                 {
                     var i = pixelLightnessBuffer[x, y];
                     xLine = $"{xLine}{charRangeArray[(i - (i % 5)) / 5]}";
@@ -152,9 +188,9 @@ namespace ASCII_Art_Terminal
         /// Print ASCII array to the console
         /// </summary>
         /// <param name="arrayInput"></param>
-        private static void PrintASCIIImage(string[] arrayInput)
+        private static void PrintASCIIImage(string[] arrayInput, Image<Rgba32> imageInput)
         {
-            for (int i = 0; i < image.Height; i++)
+            for (int i = 0; i < imageInput.Height; i++)
             {
                 Console.WriteLine(arrayInput[i]);
             }
