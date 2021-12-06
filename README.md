@@ -8,4 +8,4 @@ Generate  ASCII Art from Twitter image URLs
 PixelBuffer processing using https://github.com/SixLabors/ImageSharp API
 
 Image output size can be easily changed
-![alt text](https://i.imgur.com/xVBqp6G.png)
+![alt text](https://i.imgur.com/gSZT0eL.png)
